@@ -17,10 +17,10 @@ This is a **portfolio showcase**, not the full source repository. It contains a 
 | Audience | Students across Tasmania, regardless of institution or field |
 | Editorial starting point | Practical technology and AI writing, with room for student viewpoints and reflections |
 | Online now | Six-language website preview and a read-only 3D office simulation |
-| Behind the scenes | A private, offline test harness for role separation, evidence checks, human approval and budget stops |
+| Behind the scenes | A private offline test harness and a separate local four-role Codex SDK trial using fictional material |
 | Not online yet | Published articles, contributor intake, CMS, authenticated editor dashboard and real agent execution |
 | Hosting | Azure App Service preview |
-| Snapshot | 24 October 2026 |
+| Snapshot | 29 October 2026 |
 
 ## What visitors can try
 
@@ -54,7 +54,18 @@ flowchart LR
 
 The current public site consists of a small Node.js server, multilingual static content and a 3D scene adapted from [The Roving Office](https://github.com/atlassian-labs/roving-office). The simulation is isolated from private project data. Visitors cannot create offices, control agents or publish content through this preview.
 
-The private offline harness tests one proposed route: coordinator → researcher → drafter → independent checker → human editor. It uses fictional material and does not call real model APIs. Future work needs authenticated roles, source and permission records, a real editorial queue, cost limits and a separate sanitised public status feed. A human must approve publication. LinkedIn access and posting remain manual.
+The private project has two distinct local tests. A deterministic offline harness checks role separation, source conflicts, budget stops and the human approval gate without calling a model. A separate four-role Codex SDK trial made real model calls using fictional material and sent filtered status events to a private local office. Neither test drives the public 3D scene. The planned five-model project API trial is paused. Future operation needs authenticated roles, source and permission records, a real editorial queue, cost limits and a separate sanitised public status feed. A human must approve publication. LinkedIn access and posting remain manual.
+
+## Evidence and limits
+
+These are dated checks, not claims of a production editorial service:
+
+| Check | Result | What it establishes |
+| --- | --- | --- |
+| Public preview, 29 October 2026 | Homepage and office URLs both returned HTTP 200 | The preview pages were reachable at the time of the check; it does not prove live agents. |
+| Language completeness, 29 October 2026 | 47 website content fields and 49 office phrases complete in all six languages | Required text entries are present and current; native-speaker quality review remains outstanding. |
+| Private agent-core tests, 29 October 2026 | 17 of 17 passed | The local test harness checks evidence conflicts, role boundaries and stopping rules. Its source is not published in this showcase. |
+| Local Codex SDK trial, 28 October 2026 | Four separate role sessions; unsupported draft text triggered `correction_needed`; 16 of 16 filtered status events reached the private office receiver | A bounded local experiment, not the public website backend or a five-model API test. |
 
 ## My part
 

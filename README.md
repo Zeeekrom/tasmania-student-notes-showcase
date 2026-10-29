@@ -16,7 +16,7 @@ This is a **portfolio showcase**, not the full source repository. It contains a 
 | --- | --- |
 | Audience | Students across Tasmania, regardless of institution or field |
 | Editorial starting point | Practical technology and AI writing, with room for student viewpoints and reflections |
-| Online now | Six-language website preview and a read-only 3D office simulation |
+| Online now | Six-language website preview with a read-only 3D office simulation embedded on the homepage |
 | Behind the scenes | A private offline test harness and a separate local four-role Codex SDK trial using fictional material |
 | Not online yet | Published articles, contributor intake, CMS, authenticated editor dashboard and real agent execution |
 | Hosting | Azure App Service preview |
@@ -25,7 +25,7 @@ This is a **portfolio showcase**, not the full source repository. It contains a 
 ## What visitors can try
 
 1. Open the [website preview](https://tas-stu-notes-preview.azurewebsites.net/). Switch among English, Simplified Chinese, Bangla, Nepali, Korean and Vietnamese.
-2. Follow the “3D office preview” link. The chosen language follows you into the scene and back to the homepage.
+2. Use the “3D office” navigation item to see the scene in the homepage's behind-the-scenes section. The full-size view is linked above it. Changing the language in either the page or the embedded scene updates both.
 3. Click a character to see its sample status, current task and recent activity. This is a read-only demonstration: the tasks and movement are generated examples, not records of real editorial work.
 
 | English office | Chinese agent detail |
@@ -62,8 +62,8 @@ These are dated checks, not claims of a production editorial service:
 
 | Check | Result | What it establishes |
 | --- | --- | --- |
-| Public preview, 29 October 2026 | Homepage and office URLs both returned HTTP 200 | The preview pages were reachable at the time of the check; it does not prove live agents. |
-| Language completeness, 29 October 2026 | 47 website content fields and 49 office phrases complete in all six languages | Required text entries are present and current; native-speaker quality review remains outstanding. |
+| Public preview, 29 October 2026 | Embedded office rendered on the Azure homepage and the full-size office route remained available | The public visual simulation is reachable; it does not prove live agents. |
+| Language completeness, 29 October 2026 | 49 website content fields and 49 office phrases complete in all six languages | Required text entries are present and current; native-speaker quality review remains outstanding. |
 | Private agent-core tests, 29 October 2026 | 17 of 17 passed | The local test harness checks evidence conflicts, role boundaries and stopping rules. Its source is not published in this showcase. |
 | Local Codex SDK trial, 28 October 2026 | Four separate role sessions; unsupported draft text triggered `correction_needed`; 16 of 16 filtered status events reached the private office receiver | A bounded local experiment, not the public website backend or a five-model API test. |
 

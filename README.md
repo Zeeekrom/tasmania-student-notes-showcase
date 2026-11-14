@@ -2,87 +2,121 @@
 
 **English** · [简体中文](README.zh-CN.md)
 
-An independent, student-led publication in Tasmania. Technology and AI are the starting points; student projects, study-to-work experiences, personal reflections and everyday life also belong. Students from different institutions and disciplines are welcome. This is not an official university or student-association publication.
+> An independent, student-led publication for Tasmania, in six languages, with a
+> newsroom of four AI roles in which a human editor approves every final result.
 
-![Tasmania Student Notes homepage, English preview](media/home-en.png)
+![Tasmania Student Notes home page, English preview](media/home-en.png)
 
-**[Explore the website preview](https://tas-stu-notes-preview.azurewebsites.net/)** · **[View the LinkedIn Page](https://www.linkedin.com/company/144045910/)**
+**[Open the website preview](https://tas-stu-notes-preview.azurewebsites.net/)** · **[How a story is made](https://tas-stu-notes-preview.azurewebsites.net/how-we-work/)** · **[Watch the pixel office](https://tas-stu-notes-preview.azurewebsites.net/office/)** · **[Terms and privacy](https://tas-stu-notes-preview.azurewebsites.net/terms/)**
 
-This is a **portfolio showcase**, not the full source repository. It contains a project account and public-safe screenshots. The website is a prototype, and the 3D office shows **simulated agents**, not a live autonomous editorial team.
+This is a **curated portfolio showcase**, not the source repository. It holds a
+project account, screenshots of the public preview and a poster. The website is
+a prototype with no published stories yet. The newsroom runs privately on the
+editor's computer, and its pilot runs used fictional material.
 
 ## At a glance
 
 | | |
 | --- | --- |
-| Audience | Students across Tasmania, regardless of institution or field |
-| Editorial starting point | Practical technology and AI writing, with room for student viewpoints and reflections |
-| Online now | Six-language website preview with a read-only 3D office simulation embedded on the homepage |
-| Behind the scenes | A private offline test harness and a separate local four-role Codex SDK trial using fictional material |
-| Not online yet | Published articles, contributor intake, CMS, authenticated editor dashboard and real agent execution |
-| Hosting | Azure App Service preview |
-| Snapshot | 29 October 2026 |
+| Audience | Students across Tasmania, whatever they study and wherever they come from |
+| Online now | A six-language preview site built on Ghost's Headline theme, with a pixel office that replays recorded pilot runs |
+| Behind the scenes | A private newsroom: Coordinator, Researcher, Writer and Checker on a self-hosted Multica board, run in Docker on the editor's computer |
+| Who decides | The Coordinator approves routine hand-offs; the human editor approves big decisions and every final result |
+| Not online yet | Published stories, contributor submissions, a public view of live work, and a content management system |
+| Hosting | Azure App Service preview (free tier) |
+| Snapshot | 15 November 2026 |
 
 ## What visitors can try
 
-1. Open the [website preview](https://tas-stu-notes-preview.azurewebsites.net/). Switch among English, Simplified Chinese, Bangla, Nepali, Korean and Vietnamese.
-2. Use the “3D office” navigation item to see the scene in the homepage's behind-the-scenes section. The full-size view is linked above it. Changing the language in either the page or the embedded scene updates both.
-3. Click a character to see its sample status, current task and recent activity. This is a read-only demonstration: the tasks and movement are generated examples, not records of real editorial work.
+1. Open the [preview](https://tas-stu-notes-preview.azurewebsites.net/) and switch among English, Simplified Chinese, Bangla, Nepali, Korean and Vietnamese. The site opens in English unless you pick a language.
+2. Read [How a story is made](https://tas-stu-notes-preview.azurewebsites.net/how-we-work/): the four AI roles, the human editor and who approves what.
+3. Watch the [pixel office](https://tas-stu-notes-preview.azurewebsites.net/office/). It replays three recorded pilot runs, then shows a simulated break. It is labelled as a replay, never as live work.
+4. Search the site (the magnifier, or Ctrl+K), share a page, or follow it by RSS in your language.
 
-| English office | Chinese agent detail |
+| Pixel office replay | How a story is made |
 | --- | --- |
-| ![Read-only 3D office in English](media/office-en.png) | ![Simulated agent detail in Simplified Chinese](media/office-zh-detail.png) |
+| ![The pixel office replaying a recorded pilot run](media/office-replay-en.png) | ![The four AI roles and the human editor](media/how-a-story-is-made-en.png) |
 
-The language switch also covers the visitor-facing office labels, sample tasks, status text, work steps and text drawn on the in-scene task board. The non-English copy is an initial AI-assisted translation and needs native-speaker review before a production publication.
+![The site on a phone in English, Simplified Chinese and Bangla](media/languages-phone.png)
 
-## Why this exists
+The non-English text is AI-assisted and still needs review by native speakers.
+A check run on every build confirms that each of the six languages is complete.
 
-The publication is meant to make useful student thinking visible without requiring every contribution to start as a polished article. A technical note can show what was tested and where it failed. A personal piece can show how a view was formed or changed. The website gives these different kinds of work a common home.
-
-There is a second, operational question: can AI help a small editorial team research, draft, check and translate without becoming its own unchecked approver? The current project explores that question in stages. The public 3D office is a visual prototype; it does not claim that this workflow is already running.
-
-## Current system and intended direction
+## How a story is made
 
 ```mermaid
 flowchart LR
-    V[Visitor] --> H[Six-language website preview]
-    H --> O[Read-only 3D office]
-    M[Simulated sample events] --> O
-    E[Human editor - planned] -.-> W[Private editorial workflow - planned]
-    W -. approved articles .-> H
-    W -. filtered, truthful status .-> O
+    E[Human editor] -->|request in Slack| B[Multica board]
+    B --> C[Coordinator]
+    C -->|step 1| R[Researcher]
+    C -->|step 2| W[Writer]
+    C -->|step 3| K[Checker<br/>different AI company]
+    R & W & K -->|results| C
+    C -->|summary| E
+    E -->|approves the final result| P[Publication<br/>not yet live]
 ```
 
-The current public site consists of a small Node.js server, multilingual static content and a 3D scene adapted from [The Roving Office](https://github.com/atlassian-labs/roving-office). The simulation is isolated from private project data. Visitors cannot create offices, control agents or publish content through this preview.
+- **One board.** Work arrives as an issue on a self-hosted Multica board, usually from a Slack message. The Coordinator splits it into steps and hands each to one role at a time.
+- **Separate roles.** Each task runs in its own working space. The agents share no memory, have their web search and browsing tools switched off, and cannot load extra plug-ins or instructions.
+- **A second opinion from elsewhere.** The Coordinator, Researcher and Writer run on Claude; the Checker runs on OpenAI's Codex, so no model checks its own writing.
+- **Tiered approval.** The Coordinator may approve the routine hand-off between steps. Only the human editor can close the main piece. A guard reopens anything an agent closes beyond its rights.
+- **Honest replays.** A private office view follows the board live, on the editor's computer only. A recorder keeps only the time, the role and the kind of movement, with no titles or text. A person reviews each recording before it becomes a public replay.
 
-The private project has two distinct local tests. A deterministic offline harness checks role separation, source conflicts, budget stops and the human approval gate without calling a model. A separate four-role Codex SDK trial made real model calls using fictional material and sent filtered status events to a private local office. Neither test drives the public 3D scene. The planned five-model project API trial is paused. Future operation needs authenticated roles, source and permission records, a real editorial queue, cost limits and a separate sanitised public status feed. A human must approve publication. LinkedIn access and posting remain manual.
+More detail: [How the newsroom works](docs/how-the-newsroom-works.md).
 
 ## Evidence and limits
 
-These are dated checks, not claims of a production editorial service:
+Dated checks, not claims of a production newsroom:
 
-| Check | Result | What it establishes |
+| Check | Result | What it shows |
 | --- | --- | --- |
-| Public preview, 29 October 2026 | Embedded office rendered on the Azure homepage and the full-size office route remained available | The public visual simulation is reachable; it does not prove live agents. |
-| Language completeness, 29 October 2026 | 49 website content fields and 49 office phrases complete in all six languages | Required text entries are present and current; native-speaker quality review remains outstanding. |
-| Private agent-core tests, 29 October 2026 | 17 of 17 passed | The local test harness checks evidence conflicts, role boundaries and stopping rules. Its source is not published in this showcase. |
-| Local Codex SDK trial, 28 October 2026 | Four separate role sessions; unsupported draft text triggered `correction_needed`; 16 of 16 filtered status events reached the private office receiver | A bounded local experiment, not the public website backend or a five-model API test. |
+| Newsroom tests, 15 Nov 2026 | 45 of 45 passed | Rules for the guard, the office feed, the recorder and the replay export behave as written. The code is private. |
+| Language check, 15 Nov 2026 | 121 site fields and 58 office phrases complete in six languages, across 15 pages | Every language is complete and current. It does not prove translation quality. |
+| Tiered-approval pilot, 13 Nov 2026 | Three Coordinator approvals in about 90 seconds; the guard reverted nothing | Roles followed the approval rules on fictional material. It was a short pilot, not sustained operation. |
+| Public preview, 13–15 Nov 2026 | Pages, feeds and replays answered; write requests were refused; the live-event route is absent; no cookies are set | The public site is read-only and cannot show live work. |
 
 ## My part
 
-As project owner, I defined the publication's scope and the public/private access boundary, chose a reuse-first direction for the visual prototype, and guided an AI-assisted implementation of the website and its six-language office preview. I checked the running site and kept the simulated scene clearly separate from the still-private editorial workflow. The 3D renderer itself is adapted open-source work, not original code written from scratch for this project.
+As project owner, I set the publication's scope and the line between public and
+private, chose to reuse proven open-source work (Ghost's Headline theme, Pixel
+Agents art, The Roving Office simulation, the Multica board) instead of building
+from scratch, and decided who may approve what. I directed an AI-assisted
+build of the site, the newsroom set-up, the guard and the replay pipeline, and
+checked each step in the running system.
 
 ## What is not finished
 
-- No articles or student submissions are being collected through this site yet.
-- The 3D characters are simulated; there is no public view of real agent work.
-- The editor/admin experience, CMS, database and live multi-agent runner are not deployed.
-- The translations have completeness checks but not native-speaker approval.
-- The Azure address is a preview, not a promise of a permanent production service.
+- No stories are published and no submissions are collected yet.
+- The newsroom has run short pilots on fictional material only.
+- The guard reacts after the fact; it does not prevent an action in advance.
+- The four agents share one locked container; separate containers per role are planned.
+- Translations and the terms page still need review by native speakers and by a lawyer.
+- The Azure address is a preview, not a permanent service.
 
 ## Public versus private
 
-This repository intentionally contains **no application source code**, draft articles, student submissions, contact lists, prompts, API credentials, private agent logs or deployment configuration. The full working project is backed up separately in a private repository. Public updates will be curated and checked before they are added here.
+This repository contains **no source code**, drafts, student submissions,
+contact lists, prompts, credentials, agent logs or deployment settings. The
+working project is kept in a separate private repository; this showcase does
+not share its history. [Publication boundary](docs/publication-boundary.md)
+lists what may appear here and how each update is checked.
+
+## Poster
+
+<img src="media/poster.jpg" alt="Tasmania Student Notes project poster" width="520">
+
+Snapshot dated 15 November 2026. The screens are the public preview.
 
 ## Third-party work and rights
 
-The 3D office uses adapted Apache-2.0 code and visual work from Atlassian Labs’ *The Roving Office*. The upstream’s excluded brand marks were replaced or omitted in the website adaptation. See [ATTRIBUTION.md](ATTRIBUTION.md) for the pinned version and rights boundary. This repository does not grant a licence to reuse the Tasmania Student Notes name, logo, screenshots or editorial material.
+The site reuses open-source work that keeps its own licence: the Headline theme
+by Ghost (MIT), Pixel Agents art (MIT), The Roving Office simulation
+(Apache-2.0) and the Inter and Lora fonts (SIL Open Font License). See
+[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) and `third_party/`.
+
+<img src="media/terms-en.png" alt="Excerpt from the site's terms: copyright and what you may not do" width="520">
+
+Copyright (c) 2026 Tasmania Student Notes. All rights reserved. See [LICENSE](LICENSE)
+and the site's [terms](https://tas-stu-notes-preview.azurewebsites.net/terms/).
+Uses permitted by law, GitHub's own viewing and forking permissions and the
+third-party licences above still apply.

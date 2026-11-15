@@ -12,7 +12,8 @@
 This is a **curated portfolio showcase**, not the source repository. It holds a
 project account, screenshots of the public preview and a poster. The website is
 a prototype with no published stories yet. The newsroom runs privately on the
-editor's computer, and its pilot runs used fictional material.
+editor's computer. Its pilot runs used fictional material, apart from one
+rehearsal on real public news (15 November 2026) that was not published.
 
 ## At a glance
 
@@ -30,7 +31,7 @@ editor's computer, and its pilot runs used fictional material.
 
 1. Open the [preview](https://tas-stu-notes-preview.azurewebsites.net/) and switch among English, Simplified Chinese, Bangla, Nepali, Korean and Vietnamese. The site opens in English unless you pick a language.
 2. Read [How a story is made](https://tas-stu-notes-preview.azurewebsites.net/how-we-work/): the four AI roles, the human editor and who approves what.
-3. Watch the [pixel office](https://tas-stu-notes-preview.azurewebsites.net/office/). It replays three recorded pilot runs, then shows a simulated break. It is labelled as a replay, never as live work.
+3. Watch the [pixel office](https://tas-stu-notes-preview.azurewebsites.net/office/). It replays four recorded pilot runs, then shows a simulated break. It is labelled as a replay, never as live work.
 4. Search the site (the magnifier, or Ctrl+K), share a page, or follow it by RSS in your language.
 
 | Pixel office replay | How a story is made |
@@ -57,7 +58,7 @@ flowchart LR
 ```
 
 - **One board.** Work arrives as an issue on a self-hosted Multica board, usually from a Slack message. The Coordinator splits it into steps and hands each to one role at a time.
-- **Separate roles.** Each task runs in its own working space. The agents share no memory, have their web search and browsing tools switched off, and cannot load extra plug-ins or instructions.
+- **Separate roles.** Each task runs in its own working space. The agents share no memory and cannot load extra plug-ins or instructions. Only the Researcher and the Checker can search and read public web pages; the Coordinator and the Writer have no web tools, so the Writer works only from the Researcher's evidence.
 - **A second opinion from elsewhere.** The Coordinator, Researcher and Writer run on Claude; the Checker runs on OpenAI's Codex, so no model checks its own writing.
 - **Tiered approval.** The Coordinator may approve the routine hand-off between steps. Only the human editor can close the main piece. A guard reopens anything an agent closes beyond its rights.
 - **Honest replays.** A private office view follows the board live, on the editor's computer only. A recorder keeps only the time, the role and the kind of movement, with no titles or text. A person reviews each recording before it becomes a public replay.
@@ -70,8 +71,9 @@ Dated checks, not claims of a production newsroom:
 
 | Check | Result | What it shows |
 | --- | --- | --- |
-| Newsroom tests, 15 Nov 2026 | 45 of 45 passed | Rules for the guard, the office feed, the recorder and the replay export behave as written. The code is private. |
-| Language check, 15 Nov 2026 | 121 site fields and 58 office phrases complete in six languages, across 15 pages | Every language is complete and current. It does not prove translation quality. |
+| Newsroom tests, 15 Nov 2026 | 46 of 46 passed | Rules for the guard, the office feed, the recorder and the replay export behave as written. The code is private. |
+| Language check, 15 Nov 2026 | 121 site fields and 59 office phrases complete in six languages, across 15 pages | Every language is complete and current. It does not prove translation quality. |
+| News brief rehearsal, 15 Nov 2026 | Real public news, from a Slack request to the Coordinator's summary in about 25 minutes. The editor picked the stories. The Checker's first round marked 3 claims overstated and 1 unverified; after the Writer's fixes, the second round found every claim supported | The roles can carry a real news task from start to finish while the editor chooses the stories. Two hand-off faults were found and fixed: a request attached to an old issue, and a malformed mention that stalled the run for about 10 minutes. Nothing was published. |
 | Tiered-approval pilot, 13 Nov 2026 | Three Coordinator approvals in about 90 seconds; the guard reverted nothing | Roles followed the approval rules on fictional material. It was a short pilot, not sustained operation. |
 | Public preview, 13–15 Nov 2026 | Pages, feeds and replays answered; write requests were refused; the live-event route is absent; no cookies are set | The public site is read-only and cannot show live work. |
 
@@ -87,7 +89,8 @@ checked each step in the running system.
 ## What is not finished
 
 - No stories are published and no submissions are collected yet.
-- The newsroom has run short pilots on fictional material only.
+- The newsroom has run short pilots: on fictional material, and one rehearsal on real news that was not published.
+- Web access for the Researcher and the Checker is not yet limited to a list of approved sites.
 - The guard reacts after the fact; it does not prevent an action in advance.
 - The four agents share one locked container; separate containers per role are planned.
 - Translations and the terms page still need review by native speakers and by a lawyer.

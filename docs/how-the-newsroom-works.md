@@ -1,8 +1,8 @@
 # How the newsroom works
 
 Snapshot: 15 November 2026. This describes a private pilot that runs on the
-editor's own computer. It has only handled fictional material so far, and no
-story has been published through it.
+editor's own computer. It has handled fictional material and one rehearsal on
+real public news (15 November 2026); no story has been published through it.
 
 ## The pieces
 
@@ -54,6 +54,7 @@ flowchart TB
 | Splitting a request into steps and assigning them | Coordinator |
 | Approving the routine hand-off from one step to the next | Coordinator |
 | Judging whether claims hold up against sources | Checker |
+| Picking the stories for a news brief | Human editor |
 | Big decisions, anything unclear, and every final result | Human editor |
 | Publishing, outside contact, corrections | Human editor only |
 
@@ -64,8 +65,11 @@ outside the project, and nothing is published automatically.
 
 - Each task runs in its own working directory and session; agents do not share
   memory between tasks or with each other.
-- Managed settings switch off web search and browsing tools, saved memory,
-  user-level instructions and extra plug-ins for every role.
+- Managed settings switch off saved memory, user-level instructions and extra
+  plug-ins for every role.
+- Only the Researcher and the Checker can search and read public web pages, and
+  LinkedIn is blocked for both. The Coordinator and the Writer have no web
+  tools, so the Writer works only from the Researcher's evidence.
 - Each role is a separate agent on the board, so every action is attributed to it.
 
 ## Limits
@@ -73,6 +77,8 @@ outside the project, and nothing is published automatically.
 - The guard corrects after the fact; it cannot stop an action in advance.
 - All four roles still share one container. Separate containers per role are
   planned.
-- Runs so far are short pilots on fictional material.
+- Runs so far are short pilots on fictional material, plus one rehearsal on
+  real news that was not published.
+- Web access is not yet limited to a list of approved sites.
 - The public website does not connect to the newsroom. It only receives replay
   files that a person has exported and checked.

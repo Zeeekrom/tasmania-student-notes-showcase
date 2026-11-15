@@ -24,7 +24,7 @@ Notes:
   from the Pixel Agents art (MIT).
 - Screenshots were captured from the [public Azure preview](https://tas-stu-notes-preview.azurewebsites.net/)
   on 15 November 2026. The office in them plays replays of recorded pilot runs
-  (fictional material) with simulated breaks; it does not show live work.
+  with simulated breaks; it does not show live work.
 
 No student contribution, private editorial record, model prompt or credential is
 included in this repository.

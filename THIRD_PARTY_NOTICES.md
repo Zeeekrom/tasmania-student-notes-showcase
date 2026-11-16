@@ -21,7 +21,8 @@ Notes:
   artwork from its licence. The Tasmania Student Notes site does not use those
   marks.
 - The card images of the office and the four roles on the website were composed
-  from the Pixel Agents art (MIT).
+  from the Pixel Agents art (MIT). The four agent portraits on the poster are
+  cropped from the same Pixel Agents character art.
 - Screenshots were captured from the [public Azure preview](https://tas-stu-notes-preview.azurewebsites.net/)
   on 15 November 2026. The office in them plays replays of recorded pilot runs
   with simulated breaks; it does not show live work.

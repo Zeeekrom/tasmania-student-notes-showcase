@@ -2,124 +2,260 @@
 
 **English** · [简体中文](README.zh-CN.md)
 
-> An independent, student-led publication for Tasmania, in six languages, with a
-> newsroom of four AI roles in which a human editor approves every final result.
+![Status: preview](https://img.shields.io/badge/status-preview-B7791F)
+![Languages: 6](https://img.shields.io/badge/languages-6-0F766E)
+![Newsroom: 4 AI agents + 1 human editor](https://img.shields.io/badge/newsroom-4%20AI%20agents%20%2B%201%20human%20editor-12343B)
 
-![Tasmania Student Notes home page, English preview](media/home-en.png)
+Tasmania Student Notes (TSN) is an independent, student-led publication for students across Tasmania, whatever they study and wherever they come from. Its website is written in six languages: English, Simplified Chinese, Bangla, Nepali, Korean and Vietnamese.
 
-**[Open the website preview](https://tas-stu-notes-preview.azurewebsites.net/)** · **[How a story is made](https://tas-stu-notes-preview.azurewebsites.net/how-we-work/)** · **[Watch the pixel office](https://tas-stu-notes-preview.azurewebsites.net/office/)** · **[Terms and privacy](https://tas-stu-notes-preview.azurewebsites.net/terms/)**
+Behind it is a small newsroom of AI agents. A Coordinator, a Researcher, a Writer and a Checker take a request from Slack and work through it on one self-hosted board. The Checker runs on a different AI company's model from the other three, so no model checks its own writing. A human editor picks the stories, approves every final result and publishes by hand.
 
-This is a **curated portfolio showcase**, not the source repository. It holds a
-project account, screenshots of the public preview and a poster. The website is
-a prototype with no published stories yet. The newsroom runs privately on the
-editor's computer. Its pilot runs used fictional material, apart from one
-rehearsal on real public news (15 November 2026) that was not published.
+This is an independent student project. It is not a University of Tasmania or Tasmanian Government publication. No stories are published on the website yet, and no student submissions are collected.
+
+The website and newsroom source, prompts, agent logs and drafts live in a private repository. This repository is a curated showcase: an account of the project, screenshots of the public preview, a poster and dated results only.
+
+<table>
+<tr>
+<td><a href="https://tas-stu-notes-preview.azurewebsites.net/office/"><img src="media/office-replay-en.png" alt="The pixel office replaying a recorded run of the four AI agents" width="520"></a></td>
+<td><a href="media/poster.jpg"><img src="media/poster.jpg" alt="Tasmania Student Notes one-page poster" width="207"></a></td>
+</tr>
+<tr>
+<td align="center"><a href="https://tas-stu-notes-preview.azurewebsites.net/office/">Pixel office: recorded agent runs, replayed</a></td>
+<td align="center"><a href="media/poster.jpg">Poster, 16 Nov 2026</a></td>
+</tr>
+</table>
+
+**Website preview:** [Tasmania Student Notes](https://tas-stu-notes-preview.azurewebsites.net/)
+— six languages on Ghost's Headline theme, with page search, share links and an RSS feed per language. It opens in
+English unless you pick a language. No stories are published yet.
+
+**Pixel office:** [recorded agent runs](https://tas-stu-notes-preview.azurewebsites.net/office/)
+— four recorded pilot runs of the agents, replayed with simulated breaks in between. The recordings keep only who moved
+and when, never titles or text. The page says it is a replay and never shows live work.
+
+**How a story is made:** [the agents and the editor](https://tas-stu-notes-preview.azurewebsites.net/how-we-work/)
+— the four agents, the human editor and who approves what.
+
+<img src="media/home-en.png" alt="Tasmania Student Notes home page, English preview" width="640">
+
+The public preview. The bar at the top says what is true today: no stories are published yet, and a human editor will approve each one before it goes out.
+
+## Contents
+
+- [At a glance](#at-a-glance)
+- [The problem](#the-problem)
+- [Who it is for](#who-it-is-for)
+- [One story, start to finish](#one-story-start-to-finish)
+- [The screens](#the-screens)
+- [What works today](#what-works-today)
+- [Design principles](#design-principles)
+- [Real material and fictional material](#real-material-and-fictional-material)
+- [How it was built](#how-it-was-built)
+- [Problems that became rules](#problems-that-became-rules)
+- [Technology stack](#technology-stack)
+- [Verification evidence](#verification-evidence)
+- [Security and boundaries](#security-and-boundaries)
+- [What is not finished](#what-is-not-finished)
+- [What the project showed](#what-the-project-showed)
+- [Public and private](#public-and-private)
+- [Copyright and terms](#copyright-and-terms)
 
 ## At a glance
 
 | | |
-| --- | --- |
-| Audience | Students across Tasmania, whatever they study and wherever they come from |
-| Online now | A six-language preview site built on Ghost's Headline theme, with a pixel office that replays recorded pilot runs |
-| Behind the scenes | A private newsroom: Coordinator, Researcher, Writer and Checker on a self-hosted Multica board, run in Docker on the editor's computer |
-| Who decides | The Coordinator approves routine hand-offs; the human editor approves big decisions and every final result |
-| Not online yet | Published stories, contributor submissions, a public view of live work, and a content management system |
-| Hosting | Azure App Service preview (free tier) |
-| Snapshot | 15 November 2026 |
+|---|---|
+| What it is | A six-language student publication for Tasmania, with a newsroom of four AI agents in which a human editor approves every final result |
+| Who it is for | Students across Tasmania, whatever they study and wherever they come from |
+| The problem | What students need to know about study, work and life in Tasmania is scattered and mostly in English, and AI help that nobody checks spreads mistakes |
+| AI agents | The Coordinator, Researcher and Writer run on Claude through Claude Code; the Checker runs on OpenAI's Codex. They share a self-hosted Multica board and one locked container on the editor's computer |
+| Who decides | The Coordinator approves routine hand-offs. The editor picks the stories and approves every final result. A guard reopens anything an agent closes beyond its rights |
+| Stack | A Node.js website on Ghost's Headline theme, hosted on Azure App Service; Multica, Docker Compose, Slack, Claude Code and OpenAI Codex for the newsroom; Pixel Agents art and The Roving Office simulation for the office |
+| Evidence | 46 automated newsroom tests, a six-language check on every build, a tiered-approval pilot and a real-news rehearsal with two check rounds |
+| Material | Pilot runs used fictional material; one rehearsal used real public news and was not published. No student data is held |
+| Status | A preview website and a private newsroom pilot. Not a running publication yet |
 
-## What visitors can try
+## The problem
 
-1. Open the [preview](https://tas-stu-notes-preview.azurewebsites.net/) and switch among English, Simplified Chinese, Bangla, Nepali, Korean and Vietnamese. The site opens in English unless you pick a language.
-2. Read [How a story is made](https://tas-stu-notes-preview.azurewebsites.net/how-we-work/): the four AI roles, the human editor and who approves what.
-3. Watch the [pixel office](https://tas-stu-notes-preview.azurewebsites.net/office/). It replays four recorded pilot runs, then shows a simulated break. It is labelled as a replay, never as live work.
-4. Search the site (the magnifier, or Ctrl+K), share a page, or follow it by RSS in your language.
+Students in Tasmania read in many languages, and much of what they need to know about study, work and local life is scattered and written in English. A small student team cannot research, check and translate everything itself. AI can help, but a publication that uses it has to be able to answer these questions about every piece:
 
-| Pixel office replay | How a story is made |
-| --- | --- |
-| ![The pixel office replaying a recorded pilot run](media/office-replay-en.png) | ![The four AI roles and the human editor](media/how-a-story-is-made-en.png) |
+- Which source backs each claim, and did someone other than the writer open it?
+- Did any AI approve its own work?
+- Who chose the stories, and who approved the final text?
+- Can an AI agent post, email or contact anyone on its own?
+- When the site shows agents at work, is it live, a replay or a simulation?
+- Is every language complete, or is one quietly out of date?
 
-![The site on a phone in English, Simplified Chinese and Bangla](media/languages-phone.png)
+Tasmania Student Notes builds those answers into how the newsroom and the website work.
 
-The non-English text is AI-assisted and still needs review by native speakers.
-A check run on every build confirms that each of the six languages is complete.
+## Who it is for
 
-## How a story is made
+| Role | The question they need answered | What TSN shows them |
+|---|---|---|
+| Student reader | Is there something here for me, in a language I read well? | Six complete languages; sections on technology and AI, student voices, study to work and life in Tasmania; an RSS feed per language |
+| Would-be contributor | Can I share an idea without a finished article? | A Contribute page on how a question, a project or a view can become a story. Submissions are not open yet |
+| Human editor | What did each agent do, and what is waiting for me? | One board on which every step is attributed to an agent, a Blocked status when a choice is needed, a summary at the end and a private live office view |
+| Reviewer of the project | Is the AI work checked, and labelled honestly? | A Checker on another company's model, a guard outside the agents' reach, and replays that say they are replays |
+
+These roles describe the intended audience. No stories are published and no student has contributed yet.
+
+## One story, start to finish
+
+The flow below is the TSN Weekly Brief, a short weekly news video, as the agents rehearsed it on 15 November 2026.
 
 ```mermaid
 flowchart LR
-    E[Human editor] -->|request in Slack| B[Multica board]
-    B --> C[Coordinator]
-    C -->|step 1| R[Researcher]
-    C -->|step 2| W[Writer]
-    C -->|step 3| K[Checker<br/>different AI company]
-    R & W & K -->|results| C
-    C -->|summary| E
-    E -->|approves the final result| P[Publication<br/>not yet live]
+    E[Editor's request<br/>in Slack] --> C[Coordinator<br/>plans the steps]
+    C --> R[Researcher<br/>evidence cards]
+    R --> P{Editor picks<br/>the stories}
+    P --> W[Writer<br/>script and post]
+    W --> K[Checker<br/>another AI company]
+    K -->|fixes, at most two rounds| W
+    K --> S[Coordinator<br/>summary]
+    S --> A{Editor approves<br/>or sends back}
+    A --> H[Editor publishes<br/>by hand]
 ```
 
-- **One board.** Work arrives as an issue on a self-hosted Multica board, usually from a Slack message. The Coordinator splits it into steps and hands each to one role at a time.
-- **Separate roles.** Each task runs in its own working space. The agents share no memory and cannot load extra plug-ins or instructions. Only the Researcher and the Checker can search and read public web pages; the Coordinator and the Writer have no web tools, so the Writer works only from the Researcher's evidence.
-- **A second opinion from elsewhere.** The Coordinator, Researcher and Writer run on Claude; the Checker runs on OpenAI's Codex, so no model checks its own writing.
-- **Tiered approval.** The Coordinator may approve the routine hand-off between steps. Only the human editor can close the main piece. A guard reopens anything an agent closes beyond its rights.
-- **Honest replays.** A private office view follows the board live, on the editor's computer only. A recorder keeps only the time, the role and the kind of movement, with no titles or text. A person reviews each recording before it becomes a public replay.
+1. **A request arrives.** The editor writes to the Coordinator in Slack. The message becomes a main issue on the board, and every later step is a sub-issue assigned to one agent.
+2. **The Coordinator plans.** It creates three steps: research, writing and fact check. It hands work on and approves routine hand-offs, but it cannot close the main issue.
+3. **Research.** The Researcher searches and reads public web pages and writes an evidence card for each candidate story: the outlet, the source's own date, the address, when it was read, and the wording behind each claim.
+4. **The editor picks.** The Coordinator stops, marks the main issue Blocked and asks the editor to choose the stories and their order, with a recommendation.
+5. **Writing.** The Writer has no web tools. Using only the evidence cards, it writes the script, the voice lines, the post text and a list of every claim with its source. Lines that are TSN's own advice are marked as advice.
+6. **The check.** The Checker runs on OpenAI's Codex and opens every source itself. It labels each claim supported, overstated, wrong, unverified or a wording issue. The Writer fixes what it marks, for at most two rounds, and neither the Writer nor the Coordinator can overrule a verdict.
+7. **Summary and approval.** The Coordinator writes a summary, moves the main issue to In Review and asks the editor, who approves it or sends it back.
+8. **Publication.** The editor publishes by hand. No agent can post, email or contact anyone, and no automation touches LinkedIn. A guard outside the agents' reach reopens any main issue an agent closes.
+
+In the rehearsal the first check marked three claims overstated and one figure unverified. After one round of fixes the Checker found all 19 claims supported. Nothing was published.
+
+## The screens
+
+| | |
+|---|---|
+| ![The four AI agents and the human editor](media/how-a-story-is-made-en.png) | ![The site on a phone in English, Simplified Chinese and Bangla](media/languages-phone.png) |
+| **How a story is made.** The four agents, the editor, and who approves what | **On a phone.** English, Simplified Chinese and Bangla, three of the six languages |
+
+<img src="media/terms-en.png" alt="Excerpt from the site's terms: copyright and what you may not do" width="520">
+
+**Terms and privacy.** All rights reserved; no accounts, ads, analytics or cookies.
+
+## What works today
+
+| Capability | Status | Evidence |
+|---|---|---|
+| Six-language website | Live on the preview | 15 pages on Ghost's Headline theme (MIT). A check on every build confirms 121 fields in all six languages |
+| Search, sharing and RSS | Live on the preview | Page search (the magnifier or Ctrl+K), a share panel whose links open only on a visitor's click, and one RSS feed per language |
+| Terms and privacy | Live on the preview | All rights reserved; no accounts, ads, analytics or cookies. An AI-assisted draft that a lawyer has not yet checked |
+| Pixel office replays | Live on the preview | Four recorded runs, each labelled by its material. The public site has no live-event route |
+| Agent newsroom | Tested locally | Four agents on a self-hosted Multica board, started from Slack, in one locked container on the editor's computer |
+| Tiered approval and guard | Tested locally | The Coordinator may close only sub-steps; a guard reopens anything else an agent closes |
+| Cross-company check | Tested locally | The Checker on OpenAI's Codex labels each claim, with at most two rounds of fixes |
+| Weekly news brief workflow | Rehearsed once | A shared playbook for research, writing and checking; one rehearsal on real news, not published |
+| Private live office | Tested locally | Follows the board in real time on the editor's computer only; a recorder keeps sanitised movements |
+| Submissions, accounts and a content system | Planned | Not built |
+
+## Design principles
+
+- **A person approves every final result.** Agents prepare text; the editor picks, approves and publishes.
+- **No AI approves its own work.** The Checker runs on another company's model, and the Writer and the Coordinator cannot overrule its verdicts.
+- **The Writer works from evidence, not from the open web.** Only the Researcher and the Checker can read web pages.
+- **Text is material, not instructions.** Anything quoted, pasted, attached or read on the web is something to work on, never an order.
+- **Agents cannot reach out.** No agent can post, email or contact anyone, and no automation opens LinkedIn.
+- **Closing work is the editor's.** A guard outside the agents' reach reopens any main task an agent closes.
+- **Replays say they are replays.** Recordings keep only movements, a person reviews each one, and the public office never presents them as live work.
+- **Every language, or none.** A change to visitor-facing text ships only when all six languages are updated.
+- **Reuse before building.** The theme, the office art, the office simulation and the board are maintained open-source work, used under their licences.
+
+## Real material and fictional material
+
+| Run | Material | Published |
+|---|---|---|
+| Pilot runs, 13 Nov 2026 (three public replays) | Fictional tasks written for the test | No |
+| News brief rehearsal, 15 Nov 2026 (fourth public replay) | Real public news, chosen by the editor | No |
+| TSN Weekly Brief issues 1 and 2 (5 and 14 Nov 2026) | Real public news | Yes, posted by the editor on the project's LinkedIn Page. Issue 1 was made by one Claude Code session; issue 2 was written by one session and checked by a separate one in two rounds. Neither went through the agent newsroom |
+
+No student data is held anywhere in the project.
+
+## How it was built
+
+As project owner, I set the publication's scope and the line between public and private, chose to reuse proven open-source work instead of building from scratch, and decided who may approve what. AI coding assistants (Claude Code and Codex) did much of the building under my direction, and I checked each step in the running system.
+
+| Date | What it added |
+|---|---|
+| 24 Oct 2026 | Private repository, an offline prototype of the four roles and a simulated office preview |
+| 5 Nov 2026 | TSN Weekly Brief issue 1, posted by the editor |
+| 10 Nov 2026 | The office redrawn in pixel art (Pixel Agents art, The Roving Office simulation) |
+| 12 Nov 2026 | Slack and a self-hosted Multica board; the agents moved into one locked container |
+| 13 Nov 2026 | First Slack-to-board run; tiered approval and the guard; a private live office view, a recorder and the first public replays; the site rebuilt on Ghost's Headline theme; a terms and privacy page; deployed to the Azure preview |
+| 14 Nov 2026 | TSN Weekly Brief issue 2, posted by the editor |
+| 15 Nov 2026 | A shared playbook for the Weekly Brief; web access for the Researcher and the Checker only; the first real-news rehearsal through the agents; a fourth public replay |
+
+## Problems that became rules
+
+| What went wrong | What changed |
+|---|---|
+| In the first full run, the Coordinator told each step to wait until the one before was closed, so the Writer stopped as Blocked | Decision rights were written down: the Coordinator approves routine hand-offs itself, and only big decisions go to the editor |
+| Agents can technically set any status, including closing work that should be the editor's | A separate guard, out of the agents' reach, reopens anything an agent closes beyond its rights |
+| A request sent from Slack was attached to an older issue, so research ran twice | A request from Slack or chat now always opens a new main issue |
+| The Checker wrote its hand-off mention in the wrong form, and the run stalled for about ten minutes until the editor stepped in | Every agent now copies the mention exactly as given |
+| In Weekly Brief issue 2, sources disagreed on when an outage began | The playbook says: when sources disagree, say so and use the safer wording |
+| The replay export labelled every run as fictional, but the 15 Nov rehearsal used real news | Each replay now records its material, and the public office names it |
+
+## Technology stack
+
+- Website: Node.js with no framework, a page generator, Ghost's Headline theme (MIT), Inter and Lora fonts
+- Hosting: Azure App Service, free tier, deployed as a ZIP of exactly the files the server serves
+- Newsroom: a self-hosted Multica board with PostgreSQL, Docker Compose and Slack
+- Agents: Claude Code (Coordinator, Researcher, Writer) and OpenAI Codex (Checker)
+- Office: Pixel Agents art (MIT) and The Roving Office simulation (Apache-2.0)
+- Checks: Node's built-in test runner, a six-language completeness check and a guard service
 
 More detail: [How the newsroom works](docs/how-the-newsroom-works.md).
 
-## Evidence and limits
+## Verification evidence
 
 Dated checks, not claims of a production newsroom:
 
 | Check | Result | What it shows |
-| --- | --- | --- |
-| Newsroom tests, 15 Nov 2026 | 46 of 46 passed | Rules for the guard, the office feed, the recorder and the replay export behave as written. The code is private. |
-| Language check, 15 Nov 2026 | 121 site fields and 59 office phrases complete in six languages, across 15 pages | Every language is complete and current. It does not prove translation quality. |
-| News brief rehearsal, 15 Nov 2026 | Real public news, from a Slack request to the Coordinator's summary in about 25 minutes. The editor picked the stories. The Checker's first round marked 3 claims overstated and 1 unverified; after the Writer's fixes, the second round found every claim supported | The roles can carry a real news task from start to finish while the editor chooses the stories. Two hand-off faults were found and fixed: a request attached to an old issue, and a malformed mention that stalled the run for about 10 minutes. Nothing was published. |
-| Tiered-approval pilot, 13 Nov 2026 | Three Coordinator approvals in about 90 seconds; the guard reverted nothing | Roles followed the approval rules on fictional material. It was a short pilot, not sustained operation. |
-| Public preview, 13–15 Nov 2026 | Pages, feeds and replays answered; write requests were refused; the live-event route is absent; no cookies are set | The public site is read-only and cannot show live work. |
+|---|---|---|
+| Newsroom tests, 15 Nov 2026 | 46 of 46 passed | Rules for the guard, the office feed, the recorder and the replay export behave as written. The code is private |
+| Language check, 15 Nov 2026 | 121 site fields and 59 office phrases complete in six languages, across 15 pages | Every language is complete and current. It does not prove translation quality |
+| News brief rehearsal, 15 Nov 2026 | From a Slack request to the Coordinator's summary in about 25 minutes. Check round 1: 3 claims overstated, 1 unverified; round 2: all 19 supported | The agents can carry a real news task from start to finish while the editor chooses the stories. It was one rehearsal; nothing was published |
+| Tiered-approval pilot, 13 Nov 2026 | Three Coordinator approvals in about 90 seconds; the guard reverted nothing | The agents followed the approval rules on fictional material. It was a short pilot, not sustained operation |
+| Public preview, 13–15 Nov 2026 | Pages, feeds and replays answered; write requests were refused; the live-event route is absent; no cookies are set | The public site is read-only and cannot show live work |
 
-## My part
+## Security and boundaries
 
-As project owner, I set the publication's scope and the line between public and
-private, chose to reuse proven open-source work (Ghost's Headline theme, Pixel
-Agents art, The Roving Office simulation, the Multica board) instead of building
-from scratch, and decided who may approve what. I directed an AI-assisted
-build of the site, the newsroom set-up, the guard and the replay pipeline, and
-checked each step in the running system.
+- The four agents run in one container with a read-only file system and no extra privileges. They cannot load user-level instructions, plug-ins or saved memory, and each task runs in its own working folder, one task at a time.
+- Only the Researcher and the Checker can read the web. Their access is not yet limited to a list of approved sites.
+- The container holds the agents' own sign-ins, so a misled agent could in theory read them. That is why only fictional material and public news go through it, never student submissions or private data.
+- The guard corrects after the fact; it cannot stop an action in advance.
+- The board and the live office view listen only on the editor's computer. Nothing in the newsroom is reachable from the internet.
+- The public website does not connect to the newsroom. It accepts no writes and receives only replay files that a person has exported and checked.
+- The non-English text is AI-assisted and still needs review by native speakers, and the terms page still needs a lawyer's review.
 
 ## What is not finished
 
-- No stories are published and no submissions are collected yet.
-- The newsroom has run short pilots: on fictional material, and one rehearsal on real news that was not published.
-- Web access for the Researcher and the Checker is not yet limited to a list of approved sites.
-- The guard reacts after the fact; it does not prevent an action in advance.
-- The four agents share one locked container; separate containers per role are planned.
-- Translations and the terms page still need review by native speakers and by a lawyer.
+- No stories are published on the website, and submissions are not open.
+- The newsroom has run short pilots on fictional material and one rehearsal on real news. It has not yet produced a published issue.
+- All four agents share one container; a container for each role is planned.
+- Web access is not limited to a list of approved sites.
+- The guard reacts after the fact.
+- A content system, contributor accounts and a public view of live work are planned, not built.
 - The Azure address is a preview, not a permanent service.
 
-## Public versus private
+## What the project showed
 
-This repository contains **no source code**, drafts, student submissions,
-contact lists, prompts, credentials, agent logs or deployment settings. The
-working project is kept in a separate private repository; this showcase does
-not share its history. [Publication boundary](docs/publication-boundary.md)
-lists what may appear here and how each update is checked.
+- In a multi-agent workflow, small hand-off details decide whether a run finishes: one malformed mention stalled a whole run.
+- A checker from another AI company caught overstated wording that the writer had produced from correct sources.
+- An agent can technically do more than its instructions allow, so the step that matters most, closing work, is enforced from outside.
+- Saying what a replay shows (a fictional task, an unpublished rehearsal) matters as much as showing it.
+- Reusing maintained open-source work produced a credible site in days and left the effort for rules and checks.
 
-## Poster
+## Public and private
 
-<img src="media/poster.jpg" alt="Tasmania Student Notes project poster" width="520">
+This repository contains no source code, drafts, student submissions, contact lists, prompts, credentials, agent logs or deployment settings. The working project is kept in a separate private repository, and this showcase does not share its history. [Publication boundary](docs/publication-boundary.md) lists what may appear here and how each update is checked.
 
-Snapshot dated 15 November 2026. The screens are the public preview.
+## Copyright and terms
 
-## Third-party work and rights
+© 2026 Tasmania Student Notes. All rights reserved; see [LICENSE](LICENSE). The text, images, poster and documents in this repository, and the project's code and design, may not be republished, copied or adapted without written permission. Sharing links is welcome. Uses permitted by law, and GitHub's own viewing and forking permissions, still apply.
 
-The site reuses open-source work that keeps its own licence: the Headline theme
-by Ghost (MIT), Pixel Agents art (MIT), The Roving Office simulation
-(Apache-2.0) and the Inter and Lora fonts (SIL Open Font License). See
-[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) and `third_party/`.
-
-<img src="media/terms-en.png" alt="Excerpt from the site's terms: copyright and what you may not do" width="520">
-
-Copyright (c) 2026 Tasmania Student Notes. All rights reserved. See [LICENSE](LICENSE)
-and the site's [terms](https://tas-stu-notes-preview.azurewebsites.net/terms/).
-Uses permitted by law, GitHub's own viewing and forking permissions and the
-third-party licences above still apply.
+The site reuses open-source work that keeps its own licence: the Headline theme by Ghost (MIT), Pixel Agents art (MIT), The Roving Office simulation (Apache-2.0) and the Inter and Lora fonts (SIL Open Font License). See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) and `third_party/`. Terms, licences and privacy: [terms page](https://tas-stu-notes-preview.azurewebsites.net/terms/).

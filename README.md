@@ -29,6 +29,10 @@ The website and newsroom source, prompts, agent logs and drafts live in a privat
 — six languages on Ghost's Headline theme, with page search, share links and an RSS feed per language. It opens in
 English unless you pick a language. No stories are published yet.
 
+**LinkedIn Page:** [Tasmania Student Notes on LinkedIn](https://www.linkedin.com/company/144045910/)
+— where the editor posts the TSN Weekly Brief, a short weekly news video. Every post is published by hand; no agent
+posts there.
+
 **Pixel office:** [recorded agent runs](https://tas-stu-notes-preview.azurewebsites.net/office/)
 — four recorded pilot runs of the agents, replayed with simulated breaks in between. The recordings keep only who moved
 and when, never titles or text. The page says it is a replay and never shows live work.

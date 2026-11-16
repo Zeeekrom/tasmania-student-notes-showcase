@@ -28,6 +28,9 @@ Tasmania Student Notes（TSN）是一份独立的、由学生主导的刊物，�
 **网站预览：** [Tasmania Student Notes](https://tas-stu-notes-preview.azurewebsites.net/?lang=zh-Hans)
 ——六种语言，基于 Ghost 的 Headline 主题，有站内搜索、分享链接和每种语言各自的 RSS 订阅。默认是英文，除非你自己选了别的语言。还没有发表文章。
 
+**领英主页：** [Tasmania Student Notes 的领英主页](https://www.linkedin.com/company/144045910/)
+——编辑在这里发布 TSN Weekly Brief（每周一期的新闻短视频）。每条帖子都由编辑亲手发布，智能体不会在这里发帖。
+
 **像素办公室：** [智能体工作录像](https://tas-stu-notes-preview.azurewebsites.net/office/?lang=zh-Hans)
 ——回放四段录下来的智能体试运行，中间穿插模拟的休息时间。录像只保留谁在什么时候做了什么动作，不保留标题和文字。页面写明这是回放，从不显示实时工作。
 

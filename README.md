@@ -260,6 +260,6 @@ This repository contains no source code, drafts, student submissions, contact li
 
 ## Copyright and terms
 
-© 2026 Tasmania Student Notes. All rights reserved; see [LICENSE](LICENSE). The text, images, poster and documents in this repository, and the project's code and design, may not be republished, copied or adapted without written permission. Sharing links is welcome. Uses permitted by law, and GitHub's own viewing and forking permissions, still apply.
+© 2026 Tasmania Student Notes. All rights reserved; see [LICENSE](LICENSE). Without written permission, nothing in this repository may be copied, republished or adapted, and the project's code and design may not be rebuilt, whether by hand, with automated tools or with AI cloning tools. The code may not be reverse engineered except where the law allows, and the content may not be scraped, bulk-downloaded or used to train or evaluate AI models. Uses the law already allows, such as fair dealing for review or news reporting, are not affected. Sharing links is welcome. Uses permitted by law, and GitHub's own viewing and forking permissions, still apply.
 
 The site reuses open-source work that keeps its own licence: the Headline theme by Ghost (MIT), Pixel Agents art (MIT), The Roving Office simulation (Apache-2.0) and the Inter and Lora fonts (SIL Open Font License). See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) and `third_party/`. Terms, licences and privacy: [terms page](https://tas-stu-notes-preview.azurewebsites.net/terms/).

@@ -12,6 +12,7 @@ included for the parts visible in the images.
 | [Pixel Agents](https://github.com/pixel-agents-hq/pixel-agents) | Pixel-art office, furniture and characters | MIT | commit `4dd14d6` | [third_party/pixel-agents/LICENSE](third_party/pixel-agents/LICENSE) |
 | [The Roving Office](https://github.com/atlassian-labs/roving-office) by Atlassian Labs | Office simulation logic and language table | Apache-2.0 | commit `f3c51c8` (package 0.15.7) | [LICENSE](third_party/roving-office/LICENSE), [NOTICE](third_party/roving-office/NOTICE) |
 | Inter and Lora fonts, as bundled with Headline | Text in the screenshots and poster | SIL Open Font License 1.1 | as bundled with Headline | not redistributed here |
+| [Barlow Condensed](https://github.com/jpt/barlow) and [JetBrains Mono](https://github.com/JetBrains/JetBrainsMono) fonts, from Fontsource 5.3.0 | Headings and labels in the screenshots | SIL Open Font License 1.1 | Fontsource 5.3.0 | not redistributed here |
 
 Notes:
 

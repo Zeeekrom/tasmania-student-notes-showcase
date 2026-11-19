@@ -19,7 +19,7 @@ flowchart TB
         O[Office feed and recorder]
     end
     subgraph Public[Public preview]
-        W[Website, six languages]
+        W[Website, seven languages]
         R[Pixel office replays]
     end
     S --> M

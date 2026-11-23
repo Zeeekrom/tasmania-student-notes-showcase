@@ -8,8 +8,8 @@ with it.
 
 - A project account in English and Simplified Chinese, kept in step.
 - Screenshots of the public Azure preview only, and a poster made from them.
-- A high-level description of the newsroom and its decision rules.
-- Dated checks, each stated with what it does and does not show.
+- Results and boundaries: what the project does, who approves what, and a few
+  dated results, each stated with what it does and does not show.
 - Licence texts for the third-party work visible in the images.
 
 ## Excluded
@@ -17,6 +17,9 @@ with it.
 - Website, newsroom and deployment source code.
 - Drafts, student submissions and private editorial decisions.
 - Prompts, agent instructions, agent logs and raw recordings.
+- How the newsroom is wired (each agent's tools, the guard, the board set-up),
+  the decision records, the tests and the full list of lessons. These are
+  shown on request, not published.
 - Screenshots of the board, Slack or any private view.
 - Names and contact details of people other than the project owner.
 - Credentials, tokens, account identifiers and machine paths.

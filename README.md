@@ -60,8 +60,11 @@ In a rehearsal on real news (15 Nov 2026), the first check flagged three oversta
 
 - **A person approves every result.** Agents prepare; the editor picks, approves and publishes.
 - **No AI checks its own writing.** The Checker runs on a different company's model, and neither the Writer nor the Coordinator can overrule it.
+- **Work starts when the editor asks, and every step leaves a record.** Nothing runs on its own schedule; each step is logged with who did it and when, and the research and the check leave their evidence: the sources, when they were read, and a verdict on every claim.
+- **Each agent starts clean.** Every task begins from nothing, and the agents hand work to each other only through what is written on the shared board.
+- **Checks are counted.** Since issue 2, every Weekly Brief has had a separate, claim-by-claim check against its sources before posting: 9 points fixed in issue 2, and 7 in the text and 15 in the video of issue 3. In the one real-news rehearsal of the agent newsroom, the cross-company check flagged 3 of its 19 claims as overstated in the first round.
 - **Closing work is enforced from outside.** An agent can technically do more than its instructions allow, so a separate guard reopens anything an agent closes beyond its rights.
-- **Agents cannot reach out.** No agent can post, email or contact anyone, and reader messages are treated as material, never as instructions.
+- **Agents cannot reach out, and each sees only what it needs.** No agent can post, email or contact anyone, or read the inbox where pitches arrive; only the agents that need the web can read it; the newsroom cannot be reached from the internet; and web pages and reader messages are treated as material, never as instructions.
 - **Small hand-offs decide whether a run finishes.** One malformed hand-off once stalled a whole run; such details are now written into each agent's rules.
 
 ## What it can and can't do today

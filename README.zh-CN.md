@@ -72,7 +72,7 @@
 
 ## 想看细节？
 
-源码、通话里的代码导览、编辑部怎么搭起来的、决策记录、测试和智能体的指令都不在这里公开，可以约看。[在领英上私信我](https://www.linkedin.com/in/evan-h-165976301/)。
+源码、通话里的代码导览、编辑部怎么搭起来的、决策记录、测试和智能体的指令都不在这里公开，可以约看：[领英私信我](https://www.linkedin.com/in/evan-h-165976301/)，或发邮件到 [yuxianghuang2026@gmail.com](mailto:yuxianghuang2026@gmail.com)。
 
 ## 状态、源码与条款
 

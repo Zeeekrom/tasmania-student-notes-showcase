@@ -72,7 +72,7 @@ In a rehearsal on real news (15 Nov 2026), the first check flagged three oversta
 
 ## Want the details?
 
-The source, a code tour on a call, how the newsroom is wired, the decision records, the tests and the agents' instructions aren't published here; they're available on request. [Message me on LinkedIn](https://www.linkedin.com/in/evan-h-165976301/).
+The source, a code tour on a call, how the newsroom is wired, the decision records, the tests and the agents' instructions aren't published here; they're available on request — [message me on LinkedIn](https://www.linkedin.com/in/evan-h-165976301/) or email [yuxianghuang2026@gmail.com](mailto:yuxianghuang2026@gmail.com).
 
 ## Status, source &amp; terms
 
